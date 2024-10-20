@@ -3,7 +3,5 @@ function solution(strings, n) {
     a[n] === b[n] ? a.localeCompare(b) : a[n].localeCompare(b[n]),
   );
 
-  console.log(answer);
-
   return answer;
 }
