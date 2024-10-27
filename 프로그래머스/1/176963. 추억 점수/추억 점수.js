@@ -5,13 +5,10 @@ function solution(name, yearning, photo) {
     obj[name[i]] = yearning[i];
   }
 
-  const answer = photo.map((photoItem) => {
-    return photoItem
-      .map((photoItemName) => {
-        return obj[photoItemName];
-      })
-      .filter((number) => number)
-      .reduce((acc, currentValue) => acc + currentValue, 0);
+  const answer = photo.map((item) => {
+    return item
+      .map((value) => obj[value] || 0)
+      .reduce((acc, cv) => acc + cv, 0);
   });
 
   return answer;
