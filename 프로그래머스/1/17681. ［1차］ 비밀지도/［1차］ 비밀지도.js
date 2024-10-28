@@ -20,15 +20,15 @@ function solution(n, arr1, arr2) {
   const convertedBinaryArr1 = covertBinaryArr(n, arr1);
   const convertedBinaryArr2 = covertBinaryArr(n, arr2);
 
-  const plus = convertedBinaryArr1.map((arr, i) => {
+  const combinedArr = convertedBinaryArr1.map((arr, i) => {
     return arr.map((num, j) => num + convertedBinaryArr2[i][j]);
   });
 
-  const replace = plus.map((arr) =>
+  const answer = combinedArr.map((arr) =>
     arr.reduce((acc, crv) => {
       return crv ? `${acc}#` : `${acc} `;
     }, ""),
   );
 
-  return replace;
+  return answer;
 }
