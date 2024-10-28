@@ -1,17 +1,17 @@
 function solution(k, score) {
-  const copiedScore = [];
+  const queue = [];
 
   const answer = score.map((num, i) => {
-    if (copiedScore.length < k) {
-      copiedScore.push(num);
-    } else if (copiedScore.length >= k && copiedScore[0] < num) {
-      copiedScore.shift();
-      copiedScore.push(num);
+    if (queue.length < k) {
+      queue.push(num);
+    } else if (queue.length === k && queue[0] < num) {
+      queue.shift();
+      queue.push(num);
     }
 
-    copiedScore.sort((a, b) => a - b);
+    queue.sort((a, b) => a - b);
 
-    return copiedScore[0];
+    return queue[0];
   });
 
   return answer;
