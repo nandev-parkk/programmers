@@ -1,34 +1,24 @@
-function covertBinaryArr(n, numArr) {
-  return numArr.map((num) => {
-    const binary = [];
-    let copyNum = num;
-
-    while (copyNum >= 1) {
-      binary.unshift(copyNum % 2);
-      copyNum = Math.floor(copyNum / 2);
-    }
-
-    while (binary.length < n) {
-      binary.unshift(0);
-    }
-
-    return binary;
-  });
+function convertBinary(n, num) {
+  return num.toString(2).padStart(n, 0).split("");
 }
 
 function solution(n, arr1, arr2) {
-  const convertedBinaryArr1 = covertBinaryArr(n, arr1);
-  const convertedBinaryArr2 = covertBinaryArr(n, arr2);
+  const answer = [];
 
-  const combinedArr = convertedBinaryArr1.map((arr, i) => {
-    return arr.map((num, j) => num + convertedBinaryArr2[i][j]);
-  });
+  for (let i = 0; i < n; i++) {
+    const binary1 = convertBinary(n, arr1[i]);
+    const binary2 = convertBinary(n, arr2[i]);
 
-  const answer = combinedArr.map((arr) =>
-    arr.reduce((acc, crv) => {
-      return crv ? `${acc}#` : `${acc} `;
-    }, ""),
-  );
+    const map = binary1
+      .map((num, j) => {
+        const sum = Number(num) + Number(binary2[j]);
+
+        return sum === 1 || sum === 2 ? "#" : " ";
+      })
+      .join("");
+
+    answer.push(map);
+  }
 
   return answer;
 }
