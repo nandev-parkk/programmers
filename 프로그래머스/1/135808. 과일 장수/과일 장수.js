@@ -1,5 +1,6 @@
 function solution(k, m, score) {
-      const answer = [];
+  const answer = [];
+
   const sortedScore = score.sort((a, b) => b - a);
 
   for (let i = 0; i < sortedScore.length; i += m) {
@@ -10,9 +11,6 @@ function solution(k, m, score) {
 
   return answer
     .filter((arr) => arr.length === m)
-    .map((arr) => {
-      const min = Math.min(...arr);
-      return min * m;
-    })
+    .map((arr) => Math.min(...arr) * m)
     .reduce((acc, cv) => acc + cv, 0);
 }
