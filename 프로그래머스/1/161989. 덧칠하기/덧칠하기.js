@@ -1,11 +1,11 @@
 function solution(n, m, section) {
-   let count = 0;
-  let distance = 0;
+     let count = 0;
+  let target = 0;
 
   for (const i in section) {
-    if (section[i] <= distance) continue;
+    if (section[i] <= target) continue;
 
-    distance = section[i] + m - 1;
+    target = section[i] + m - 1;
     count++;
   }
 

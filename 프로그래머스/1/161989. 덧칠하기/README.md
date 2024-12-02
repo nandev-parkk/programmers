@@ -1,10 +1,10 @@
 # [level 1] 덧칠하기 - 161989 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/161989#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/161989?language=javascript) 
 
 ### 성능 요약
 
-메모리: 39.9 MB, 시간: 12.53 ms
+메모리: 40.8 MB, 시간: 7.66 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 12월 02일 22:41:54
+2024년 12월 02일 22:47:51
 
 ### 문제 설명
 
