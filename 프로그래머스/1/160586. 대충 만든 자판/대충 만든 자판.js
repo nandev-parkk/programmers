@@ -1,7 +1,7 @@
 function solution(keymap, targets) {
-const answer = targets.map((target) => {
+  const answer = targets.map((target) => {
     const countArr = [];
-    const splitTarget = target.split(""); // [A, B, C, D]
+    const splitTarget = target.split("");
 
     for (const str of splitTarget) {
       let finalIndex = NaN;
