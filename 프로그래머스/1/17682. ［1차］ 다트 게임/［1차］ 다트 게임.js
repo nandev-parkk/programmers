@@ -19,7 +19,7 @@ function solution(dartResult) {
   for (let i = 0; i < splitDartResult.length; i++) {
     const currentValue = splitDartResult[i];
 
-    if (Number(currentValue)) continue;
+    if (!isNaN(currentValue)) continue;
 
     if (currentValue === "S" || currentValue === "D" || currentValue === "T") {
       splitDartResult[i - 1] =
