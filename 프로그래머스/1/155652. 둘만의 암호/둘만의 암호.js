@@ -1,38 +1,52 @@
-const alphabet = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(97 + i),
-);
-
 function solution(s, skip, index) {
-    const answer = s.split("").map((char) => {
-    let count = 0;
-    let scount = alphabet.indexOf(char);
-    let nextChar;
+    const alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
 
-    console.log(`---${char}---`);
+  // alphabet 배열에서 s의 index를 구한다.
+  const convertedStr = s.split("").map((str) => alphabet.indexOf(str));
 
-    while (count < index) {
-      // 투 트랙으로 count를 올리는 코드와 alphabet을 순회하는 코드가 있어야한다.
+  const s2 = convertedStr.map((num) => {
+    let count = index;
 
-      scount++;
+    for (let i = 1; i <= index; i++) {
+      const include =
+        num + i >= alphabet.length
+          ? alphabet[num + i - alphabet.length]
+          : alphabet[num + i];
 
-      if (scount > 25) {
-        scount = 0;
-      }
-
-      // console.log(scount);
-
-      nextChar = alphabet[scount];
-
-      // console.log(nextChar, "nextChar");
-
-      // 포함되어 있지 않는 경우에만 count++
-      if (!skip.includes(nextChar)) {
-        count++;
-      }
+      if (skip.includes(include)) count++;
     }
 
-    return nextChar;
+    return alphabet.length - 1 < num + count
+      ? alphabet[num + count - alphabet.length]
+      : alphabet[num + count];
   });
 
-  return answer.join("");
+  return s2.join("");
 }
