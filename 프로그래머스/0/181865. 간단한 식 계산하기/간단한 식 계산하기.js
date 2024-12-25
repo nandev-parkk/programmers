@@ -1,14 +1,10 @@
 function solution(binomial) {
-  const splitBinomial = binomial.split(" ");
-  const leftOperand = +splitBinomial[0];
-  const rightOperand = +splitBinomial[2];
-  const operator = splitBinomial[1];
+  const operators = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+  };
+  const [a, op, b] = binomial.split(" ");
 
-  if (operator === "+") {
-    return leftOperand + rightOperand;
-  } else if (operator === "-") {
-    return leftOperand - rightOperand;
-  } else if (operator === "*") {
-    return leftOperand * rightOperand;
-  }
+  return operators[op](+a, +b);
 }
