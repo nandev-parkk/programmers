@@ -1,15 +1,15 @@
 function solution(X, Y) {
-   const xArr = X.split("");
-  const yArr = Y.split("");
+  const xArr = Array.from(X);
+  const yArr = Array.from(Y);
   const map = new Map();
 
   for (let i = 0; i < 10; i++) {
-    const a = xArr.filter((x) => +x === i).length;
-    const b = yArr.filter((y) => +y === i).length;
+    const xArrLength = xArr.filter((x) => +x === i).length;
+    const yArrLength = yArr.filter((y) => +y === i).length;
 
-    if (!a || !b) continue;
+    if (!xArrLength || !yArrLength) continue;
 
-    map.set(i, Math.min(a, b));
+    map.set(i, Math.min(xArrLength, yArrLength));
   }
 
   if (!map.size) {
