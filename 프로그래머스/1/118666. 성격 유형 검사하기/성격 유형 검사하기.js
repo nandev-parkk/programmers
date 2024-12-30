@@ -1,5 +1,5 @@
 function solution(survey, choices) {
-    const score = {
+ const score = {
     1: 3,
     2: 2,
     3: 1,
@@ -9,36 +9,27 @@ function solution(survey, choices) {
     7: 3,
   };
 
-  // const personalityType2 = new Map([
-  //   ["indicator1", { R: 0, T: 0 }],
-  //   ["indicator2", { C: 0, F: 0 }],
-  //   ["indicator3", { J: 0, M: 0 }],
-  //   ["indicator4", { A: 0, N: 0 }],
-  // ]);
-  //
-  // const personalityType = { R: 0, T: 0, C: 0, F: 0, J: 0, M: 0, A: 0, N: 0 };
-
-  const personalityType = [
+  const indicators = [
     { R: 0, T: 0 },
     { C: 0, F: 0 },
     { J: 0, M: 0 },
     { A: 0, N: 0 },
   ];
 
-  survey.forEach((indicator, idx) => {
-    const [a, b] = indicator;
+  survey.forEach((types, idx) => {
+    const [disagree, agree] = types;
     const currentScore = choices[idx];
 
-    personalityType.forEach((type, i) => {
-      if (currentScore < 4 && type.hasOwnProperty(a)) {
-        personalityType[i][a] += score[currentScore];
-      } else if (currentScore > 4 && type.hasOwnProperty(b)) {
-        personalityType[i][b] += score[currentScore];
+    indicators.forEach((indicator, i) => {
+      if (currentScore < 4 && indicator.hasOwnProperty(disagree)) {
+        indicators[i][disagree] += score[currentScore];
+      } else if (currentScore > 4 && indicator.hasOwnProperty(agree)) {
+        indicators[i][agree] += score[currentScore];
       }
     });
   });
 
-  const answer = personalityType
+  const answer = indicators
     .map((indicator) => {
       const [[aType, aScore], [bType, bScore]] = Object.entries(indicator);
 
