@@ -19,10 +19,10 @@ function solution(board, moves) {
       }
     }
 
+    if (!basket.length) continue;
+
     const lastNum = basket[basket.length - 1];
     const lastPrevNum = basket[basket.length - 2];
-      
-          if (!lastNum || !lastPrevNum) continue;
 
     if (lastNum === lastPrevNum) {
       basket.splice(-2, 2);
