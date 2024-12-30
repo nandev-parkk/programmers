@@ -11,12 +11,11 @@ function solution(board, moves) {
       // board에 인형이 없으면 continue
       if (!boardIndex) continue;
 
-      if (boardIndex) {
+     
         basket.push(boardIndex);
         board[j][craneIndex] = 0;
 
         break;
-      }
     }
 
     if (!basket.length) continue;
