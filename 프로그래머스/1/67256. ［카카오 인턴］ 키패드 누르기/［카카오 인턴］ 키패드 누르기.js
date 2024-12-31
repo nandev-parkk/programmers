@@ -10,6 +10,7 @@ function solution(numbers, hand) {
   const rightKeypad = [3, 6, 9];
 
   // 각각 *, #에서 시작하기 때문에 keypad의 해당 x, y 인덱스
+  // 사실 안해도되긴함
   let leftHandPosition = [0, 3];
   let rightHandPosition = [2, 3];
   let answer = "";
@@ -56,30 +57,6 @@ function solution(numbers, hand) {
         answer += "R";
         rightHandPosition = getKeypadPosition(targetNum);
       }
-
-      // else if (
-      //   (leftHandDistance === rightHandDistance && hand === "right") ||
-      //   leftHandDistance > rightHandDistance
-      // ) {
-      //   answer += "R";
-      //   rightHandPosition = getKeypadPosition(targetNum);
-      // }
-
-      // if (leftHandDistance === rightHandDistance) {
-      //   if (hand === "left") {
-      //     answer += "L";
-      //     leftHandPosition = getKeypadPosition(targetNum);
-      //   } else {
-      //     answer += "R";
-      //     rightHandPosition = getKeypadPosition(targetNum);
-      //   }
-      // } else if (leftHandDistance < rightHandDistance) {
-      //   answer += "L";
-      //   leftHandPosition = getKeypadPosition(targetNum);
-      // } else {
-      //   answer += "R";
-      //   rightHandPosition = getKeypadPosition(targetNum);
-      // }
     }
   }
 
