@@ -1,13 +1,10 @@
 function solution(arr, intervals) {
-  const answer = intervals.flatMap(([start, end]) => {
-    const numArr = [];
+       const [[firstStart, firstEnd], [secondStart, secondEnd]] = intervals;
 
-    for (let i = start; i <= end; i++) {
-      numArr.push(arr[i]);
-    }
-
-    return numArr;
-  });
+  const answer = [
+    ...arr.slice(firstStart, firstEnd + 1),
+    ...arr.slice(secondStart, secondEnd + 1),
+  ];
 
   return answer;
 }
