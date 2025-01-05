@@ -1,5 +1,5 @@
 function solution(park, routes) {
- // 시작점 찾기
+  // 시작점 찾기
   const currentCoordinates = [];
 
   for (let i = 0; i < park.length; i++) {
@@ -23,8 +23,6 @@ function solution(park, routes) {
 
   // 명령 수행
   for (const [op, _, n] of routes) {
-    // const temp = [...currentCoordinates];
-
     let [y, x] = currentCoordinates;
 
     for (let i = 1; i <= n; i++) {
@@ -47,7 +45,7 @@ function solution(park, routes) {
       )
         break;
 
-      // 값이 X인지 확인
+      // 값이 X인지 확인 후 값이 X이면 y, x 값 초기화
       if (park[y][x] === "X") {
         if (op === "S" || op === "N") {
           y = currentCoordinates[0];
