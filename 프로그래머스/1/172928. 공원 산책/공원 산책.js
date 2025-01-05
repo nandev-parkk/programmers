@@ -41,12 +41,9 @@ function solution(park, routes) {
         y < yAxisMinBoundary ||
         y > yAxisMaxBoundary ||
         x < xAxisMinBoundary ||
-        x > xAxisMaxBoundary
-      )
-        break;
-
-      // 값이 X인지 확인 후 값이 X이면 y, x 값 초기화
-      if (park[y][x] === "X") {
+        x > xAxisMaxBoundary ||
+        park[y][x] === "X"
+      ) {
         if (op === "S" || op === "N") {
           y = currentCoordinates[0];
         } else {
@@ -56,15 +53,6 @@ function solution(park, routes) {
         break;
       }
     }
-
-    // 경계 확인
-    if (
-      y < yAxisMinBoundary ||
-      y > yAxisMaxBoundary ||
-      x < xAxisMinBoundary ||
-      x > xAxisMaxBoundary
-    )
-      continue;
 
     currentCoordinates[0] = y;
     currentCoordinates[1] = x;
