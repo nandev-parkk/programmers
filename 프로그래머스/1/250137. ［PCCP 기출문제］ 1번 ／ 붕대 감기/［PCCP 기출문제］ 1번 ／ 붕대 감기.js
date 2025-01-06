@@ -9,8 +9,8 @@ function solution(bandage, health, attacks) {
   let successRecovery = 0;
 
   for (let i = startTime; i <= endTime; i++) {
-      if (tempHealth < 0) return -1;
-      
+    if (tempHealth <= 0) return -1;
+
     const currentAttack = attacks.find(([attackTime]) => attackTime === i);
 
     if (currentAttack) {
@@ -35,5 +35,5 @@ function solution(bandage, health, attacks) {
     }
   }
 
-  return tempHealth > 0 ? tempHealth : -1;
+  return tempHealth <= 0 ? -1 : tempHealth;
 }
