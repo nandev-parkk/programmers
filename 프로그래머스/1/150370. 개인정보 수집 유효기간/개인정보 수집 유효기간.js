@@ -20,7 +20,7 @@ function solution(today, terms, privacies) {
         month--;
       }
 
-      if (!month) {
+      if (month === 0) {
         month++;
       }
 
@@ -31,6 +31,8 @@ function solution(today, terms, privacies) {
 
       const todayTime = new Date(today.replaceAll(".", "-"));
       const availableDateTime = new Date(`${year}-${paddedMonth}-${paddedDay}`);
+
+      console.log(year, month, day);
 
       return todayTime <= availableDateTime ? "" : i + 1;
     })
