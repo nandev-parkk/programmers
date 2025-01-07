@@ -32,8 +32,6 @@ function solution(today, terms, privacies) {
       const todayTime = new Date(today.replaceAll(".", "-"));
       const availableDateTime = new Date(`${year}-${paddedMonth}-${paddedDay}`);
 
-      console.log(year, month, day);
-
       return todayTime <= availableDateTime ? "" : i + 1;
     })
     .filter((i) => i);
