@@ -1,9 +1,8 @@
 function solution(elements) {
-  // 길이가 1인 연속 부분 수열의 합으로 시작
   let answer = 0;
   const sumNums = new Set();
 
-  // 연속 부분 수열의 길이, 2부터 시작
+  // 연속 부분 수열의 길이, 1부터 시작
   let sequenceLength = 1;
 
   while (sequenceLength <= elements.length) {
