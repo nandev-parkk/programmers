@@ -1,6 +1,5 @@
 function solution(elements) {
-  let answer = 0;
-  const sumNums = new Set();
+  const answer = new Set();
 
   // 연속 부분 수열의 길이, 1부터 시작
   let sequenceLength = 1;
@@ -14,7 +13,7 @@ function solution(elements) {
       firstSum += elements[i];
     }
 
-    sumNums.add(firstSum);
+    answer.add(firstSum);
 
     tempSum = firstSum;
 
@@ -23,7 +22,7 @@ function solution(elements) {
 
       tempSum = tempSum - elements[i] + elements[next];
 
-      sumNums.add(tempSum);
+      answer.add(tempSum);
 
       if (sequenceLength === elements.length) break;
 
@@ -33,7 +32,5 @@ function solution(elements) {
     sequenceLength++;
   }
 
-  answer += sumNums.size;
-
-  return answer;
+  return answer.size;
 }
