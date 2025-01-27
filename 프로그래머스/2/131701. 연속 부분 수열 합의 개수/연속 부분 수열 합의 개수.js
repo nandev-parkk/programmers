@@ -7,10 +7,9 @@ function solution(elements) {
   let sequenceLength = 1;
 
   while (sequenceLength <= elements.length) {
-    let end = sequenceLength;
-
     let firstSum = 0;
     let tempSum = 0;
+    let next = sequenceLength;
 
     for (let i = 0; i < sequenceLength; i++) {
       firstSum += elements[i];
@@ -21,13 +20,15 @@ function solution(elements) {
     tempSum = firstSum;
 
     for (let i = 0; i < elements.length - 1; i++) {
-      end = end >= elements.length ? end - elements.length : end;
+      next = next >= elements.length ? next - elements.length : next;
 
-      tempSum = tempSum - elements[i] + elements[end];
+      tempSum = tempSum - elements[i] + elements[next];
 
       sumNums.add(tempSum);
 
-      end++;
+      if (sequenceLength === elements.length) break;
+
+      next++;
     }
 
     sequenceLength++;
