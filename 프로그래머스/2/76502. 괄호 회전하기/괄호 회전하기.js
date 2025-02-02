@@ -2,13 +2,13 @@ function solution(s) {
   // 여는 괄호가 포함되어 있지 않으면 0 리턴
   if (!s.includes("(") && !s.includes("{") && !s.includes("[")) return 0;
 
-  // for문을 돌아서 돌린다.
-  const convertedString = [...s];
-
   let count = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    // 변경된 s의 0번째 인덱스가 ), }, ]인 경우 X
+  // s 배열화
+  const convertedString = [...s];
+
+  for (let i = 0; i < convertedString.length; i++) {
+    // 변경된 s의 0번째 인덱스가 ), }, ]인 경우 continue
     if (
       convertedString[0] === ")" ||
       convertedString[0] === "}" ||
@@ -17,26 +17,25 @@ function solution(s) {
       convertedString.push(convertedString.shift());
       continue;
     }
+
     // 그렇지 않은 경우
     const stack = [];
-    let order = 0;
+    let idx = 0;
 
     for (let j = 0; j <= convertedString.length; j++) {
-      if (j < convertedString.length) {
-        stack.push(convertedString[j]);
-      }
+      if (j < convertedString.length) stack.push(convertedString[j]);
 
       if (stack.length > 1) {
         if (
-          (stack[order] === "(" && stack[order + 1] === ")") ||
-          (stack[order] === "{" && stack[order + 1] === "}") ||
-          (stack[order] === "[" && stack[order + 1] === "]")
+          (stack[idx] === "(" && stack[idx + 1] === ")") ||
+          (stack[idx] === "{" && stack[idx + 1] === "}") ||
+          (stack[idx] === "[" && stack[idx + 1] === "]")
         ) {
-          stack.splice(order, 2);
+          stack.splice(idx, 2);
 
-          order && order--;
+          idx && idx--;
         } else {
-          order++;
+          idx++;
         }
       }
     }
