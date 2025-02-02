@@ -35,11 +35,7 @@ function solution(s) {
           stack.splice(order, 2);
 
           order && order--;
-        } else if (
-          (stack[order] === "(" && stack[order + 1] !== ")") ||
-          (stack[order] === "{" && stack[order + 1] !== "}") ||
-          (stack[order] === "[" && stack[order + 1] !== "]")
-        ) {
+        } else {
           order++;
         }
       }
