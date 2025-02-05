@@ -1,8 +1,5 @@
 function solution(s) {
-  const answer = [];
-
-  // {{123}}의 경우도 제대로 동작
-  const cs = s
+  return convertedString = s
     .split("},{")
     .map((cv) =>
       cv
@@ -10,13 +7,6 @@ function solution(s) {
         .split(",")
         .map((str) => +str),
     )
-    .sort((a, b) => a.length - b.length);
-
-  for (const nums of cs) {
-    for (const num of nums) {
-      !answer.includes(num) && answer.push(num);
-    }
-  }
-
-  return answer;
+    .sort((a, b) => a.length - b.length)
+    .reduce((acc, cv) => acc.concat(cv.filter((v) => !acc.includes(v))), []);
 }
