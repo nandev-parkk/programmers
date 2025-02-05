@@ -1,21 +1,5 @@
 function solution(s) {
-  const answer = [];
-
-  const convertedString = s
-    .split("},{")
-    .map((cv) =>
-      cv
-        .replace(/[\{\}]/g, "")
-        .split(",")
-        .map((str) => +str),
-    )
-    .sort((a, b) => a.length - b.length);
-
-  for (const nums of convertedString) {
-    for (const num of nums) {
-      !answer.includes(num) && answer.push(num);
-    }
-  }
-
-  return answer;
+    return JSON.parse(s.replace(/{/g, "[").replace(/}/g, "]"))
+    .sort((a, b) => a.length - b.length)
+    .reduce((acc, cv) => acc.concat(cv.filter((v) => !acc.includes(v))), []);
 }
