@@ -12,7 +12,7 @@ function solution(cacheSize, cities) {
     const toLowerCaseCity = city.toLowerCase();
 
     if (!cache.includes(toLowerCaseCity)) {
-      cache.length >= cacheSize && cache.shift();
+      cache.length === cacheSize && cache.shift();
       runtime += CACHE_MISS;
     } else {
       // 이미 cache 안에 데이터가 있으면 오래된 데이터를 지우고 새로운 데이터를 넣어줘야한다.
