@@ -1,7 +1,7 @@
 function solution(progresses, speeds) {
   const answer = [];
 
-  const ca = progresses.map((progress, i) => {
+  const days = progresses.map((progress, i) => {
     let count = 0;
 
     while (progress < 100) {
@@ -15,11 +15,11 @@ function solution(progresses, speeds) {
   let start = 0;
   let end = 1;
 
-  while (start < ca.length) {
-    if (ca[start] >= ca[end]) {
+  while (start < days.length) {
+    if (days[start] >= days[end]) {
       end++;
     } else {
-      answer.push(ca.slice(start, end).length);
+      answer.push(days.slice(start, end).length);
       start = end;
       end++;
     }
