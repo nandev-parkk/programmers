@@ -25,7 +25,5 @@ function solution(progresses, speeds) {
     }
   }
 
-  console.log(answer);
-
   return answer;
 }
