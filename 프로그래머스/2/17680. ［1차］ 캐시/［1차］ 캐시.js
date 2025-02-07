@@ -8,9 +8,8 @@ function solution(cacheSize, cities) {
     const toLowerCaseCity = city.toLowerCase();
 
     if (!cache.includes(toLowerCaseCity)) {
-      if (cache.length < cacheSize) {
-        cache.push(toLowerCaseCity);
-      } else {
+      if (cache.length < cacheSize) cache.push(toLowerCaseCity);
+      else {
         cache.shift();
         cache.push(toLowerCaseCity);
       }
