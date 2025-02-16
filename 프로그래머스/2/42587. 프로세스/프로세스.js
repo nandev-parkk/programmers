@@ -1,17 +1,24 @@
 function solution(priorities, location) {
-    var list = priorities.map((t,i)=>({
-        my : i === location,
-        val : t
-    }));
-    var count = 0;        
-    while(true){
-        var cur = list.splice(0,1)[0];        
-        if(list.some(t=> t.val > cur.val )){
-            list.push(cur);                        
-        }
-        else{            
-            count++;
-            if(cur.my) return count;
-        }
+  const TARGET_PRIORITY = priorities[location];
+
+  priorities[location] = "target";
+
+  let answer = 0;
+
+  while (priorities.includes("target")) {
+    const currentPriority =
+      priorities[0] === "target" ? TARGET_PRIORITY : priorities[0];
+
+    const copiedPriorities = [...priorities];
+    copiedPriorities[copiedPriorities.indexOf("target")] = TARGET_PRIORITY;
+
+    if (Math.max(...copiedPriorities.slice(1)) > currentPriority)
+      priorities.push(priorities.shift());
+    else {
+      priorities.splice(0, 1);
+      answer++;
     }
+  }
+
+  return answer;
 }
