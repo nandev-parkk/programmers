@@ -2,7 +2,7 @@ function solution(topping) {
   let answer = 0;
 
   const leftMap = new Map();
-  const rightSet = new Set();
+  const rightMap = new Map();
 
   for (let i = 0; i < topping.length; i++) {
     const currentTopping = topping[i];
@@ -15,13 +15,12 @@ function solution(topping) {
     const currentTopping = topping[i];
 
     leftMap.set(currentTopping, leftMap.get(currentTopping) - 1);
-    rightSet.add(currentTopping);
+    rightMap.set(currentTopping, (rightMap.get(currentTopping) || 0) + 1);
 
-    const leftTopping = [...leftMap.entries()]
-      .map(([topping, num]) => (num ? topping : ""))
-      .filter((v) => v);
+    if (!leftMap.get(currentTopping)) leftMap.delete(currentTopping);
+    if (!rightMap.get(currentTopping)) rightMap.delete(currentTopping);
 
-    if (leftTopping.length === rightSet.size) answer++;
+    if (leftMap.size === rightMap.size) answer++;
   }
 
   return answer;

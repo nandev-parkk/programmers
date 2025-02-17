@@ -1,6 +1,6 @@
 # [level 2] 롤케이크 자르기 - 132265 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132265#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132265?language=javascript) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 02월 17일 23:52:38
+2025년 02월 17일 23:53:54
 
 ### 문제 설명
 
