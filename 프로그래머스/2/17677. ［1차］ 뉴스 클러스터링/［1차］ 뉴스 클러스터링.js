@@ -1,8 +1,8 @@
 function solution(str1, str2) {
-  // 1. 문자열을 for문을 돌아 두 글자씩 끊어서 다중 집합을 만든다.
-  // 1-1. 다중 집합 원소중 영문자가 아닌 문자 또는 공백이 포함되어 있는 원소를 제거한다.
-  const str1Set = getMultiset(str1);
-  const str2Set = getMultiset(str2);
+  // 1. 문자열을 for문을 돌아 두 글자씩 끊어서 집합을 만든다.
+  // 1-1. 집합 원소중 영문자가 아닌 문자 또는 공백이 포함되어 있는 원소를 제거한다.
+  const str1Set = getSet(str1);
+  const str2Set = getSet(str2);
 
   // 둘 다 공집합인 경우 나눗셈이 안되므로 66536 리턴
   if (!str1Set.length && !str2Set.length) return 65536;
@@ -33,8 +33,8 @@ function checkAlphabet(str) {
   return /[a-z]{2}/.test(str);
 }
 
-function getMultiset(str) {
-  const multiset = [];
+function getSet(str) {
+  const set = [];
 
   for (let i = 0; i < str.length; i++) {
     if (i === str.length - 1) break;
@@ -43,8 +43,8 @@ function getMultiset(str) {
 
     if (!checkAlphabet(currentStr)) continue;
 
-    multiset.push(currentStr);
+    set.push(currentStr);
   }
 
-  return multiset;
+  return set;
 }
