@@ -1,26 +1,36 @@
 function solution(str1, str2) {
   // 1. 문자열을 for문을 돌아 두 글자씩 끊어서 다중 집합을 만든다.
   // 1-1. 다중 집합 원소중 영문자가 아닌 문자 또는 공백이 포함되어 있는 원소를 제거한다.
-  const str1Multiset = getMultiset(str1);
-  const str2Multiset = getMultiset(str2);
+  const str1Set = getMultiset(str1);
+  const str2Set = getMultiset(str2);
 
   // 둘 다 공집합인 경우 나눗셈이 안되므로 66536 리턴
-  if (!str1Multiset.length && !str2Multiset.length) return 65536;
+  if (!str1Set.length && !str2Set.length) return 65536;
 
-  // 3. str1, str2의 교집합을 구한다.
-  const intersection = getIntersection(str1Multiset, str2Multiset);
+  // 2. 두 집합의 원소를 중복 제거한다.
+  const deduplicatedSet = new Set([...str1Set, ...str2Set]);
 
-  // 4. str1, str2의 합집합을 구한다.
-  const union = getUnion(str1Multiset, str2Multiset);
+  // 3. 남아있는 원소가 str1Set과 str2Set에 몇개 있는지 계산한다.
+  // 3-1. 두 값 중 교집합은 min, 합집합은 max 값을 더한다.
+  let intersection = 0;
+  let union = 0;
 
-  const answer = Math.floor((intersection.length / union.length) * 65536);
+  deduplicatedSet.forEach((str) => {
+    const filteredStr1SetLength = str1Set.filter((v) => v === str).length;
+    const filteredStr2SetLength = str2Set.filter((v) => v === str).length;
 
-  // 5. 교집합 크기 / 합집합 크기 * 65536 계산 후 소수점 아래를 버리고 정수부만 구한 후 리턴한다.
+    intersection += Math.min(filteredStr1SetLength, filteredStr2SetLength);
+    union += Math.max(filteredStr1SetLength, filteredStr2SetLength);
+  });
+
+  // 4. 교집합 크기 / 합집합 크기 * 65536 계산 후 소수점 아래를 버리고 정수부만 구한 후 리턴한다.
+  const answer = Math.floor((intersection / union) * 65536);
+
   return answer;
 }
 
 function checkAlphabet(str) {
-  return /[a-z]/.test(str);
+  return /[a-z]{2}/.test(str);
 }
 
 function getMultiset(str) {
@@ -29,52 +39,12 @@ function getMultiset(str) {
   for (let i = 0; i < str.length; i++) {
     if (i === str.length - 1) break;
 
-    const firstChar = str[i].toLowerCase();
-    const secondChar = str[i + 1].toLowerCase();
+    const currentStr = str.slice(i, i + 2).toLowerCase();
 
-    if (!checkAlphabet(firstChar) || !checkAlphabet(secondChar)) continue;
+    if (!checkAlphabet(currentStr)) continue;
 
-    // 추후 다른 배열과 비교하기 위해 값을 문자열 형태로 삽입
-    const stringifyStr = JSON.stringify([firstChar, secondChar]);
-
-    multiset.push(stringifyStr);
+    multiset.push(currentStr);
   }
 
   return multiset;
-}
-
-function getIntersection(multiset1, multiset2) {
-  const intersection = [];
-
-  for (const set of multiset1) {
-    if (intersection.includes(set) || !multiset2.includes(set)) continue;
-
-    const filteredMultiset1 = multiset1.filter((v) => set === v);
-    const filteredMultiset2 = multiset2.filter((v) => set === v);
-
-    if (filteredMultiset1.length < filteredMultiset2.length)
-      intersection.push(...filteredMultiset1);
-    else intersection.push(...filteredMultiset2);
-  }
-
-  return intersection;
-}
-
-function getUnion(multiset1, multiset2) {
-  const union = [];
-
-  for (const set of multiset1) {
-    if (union.includes(set)) continue;
-
-    const filteredMultiset1 = multiset1.filter((v) => set === v);
-    const filteredMultiset2 = multiset2.filter((v) => set === v);
-
-    if (filteredMultiset1.length > filteredMultiset2.length)
-      union.push(...filteredMultiset1);
-    else union.push(...filteredMultiset2);
-  }
-
-  const filteredMultiset2 = multiset2.filter((v) => !union.includes(v));
-
-  return [...union, ...filteredMultiset2];
 }
