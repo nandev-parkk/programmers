@@ -2,7 +2,7 @@ function solution(n, k) {
   const answer = n
     .toString(k)
     .split("0")
-    .filter((v) => v)
+    // .filter((v) => v)
     .filter((v) => +v > 1 && checkIsPrime(+v));
 
   return answer.length;
