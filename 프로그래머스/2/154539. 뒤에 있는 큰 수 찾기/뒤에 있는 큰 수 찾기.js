@@ -5,7 +5,7 @@ function solution(numbers) {
   for (let i = 0; i < numbers.length; i++) {
     const currentNum = numbers[i];
 
-    while (!!stack.length && numbers[stack.at(-1)] < currentNum) {
+    while (stack.length && numbers[stack.at(-1)] < currentNum) {
       answer[stack.pop()] = currentNum;
     }
 
