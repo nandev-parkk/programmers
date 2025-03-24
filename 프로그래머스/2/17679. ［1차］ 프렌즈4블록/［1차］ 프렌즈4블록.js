@@ -41,30 +41,7 @@ function solution(m, n, board) {
       mappedBorad[row + 1][col + 1] = "";
     }
 
-    // 제거 후 각 자리에 요소가 있고 다음 줄에도 요소가 있으면 현재 요소와 다음 요소를 swap
-    // 위에서 아래로 swap 하는 방법, 이렇게 하면 중간에 요소가 있으면 내릴 수 없으므로 안풀림!
-    // for (let row = 0; row < mappedBorad.length; row++) {
-    //   for (let col = 0; col < mappedBorad[row].length; col++) {
-    //     const currentColBlock = mappedBorad[row][col];
-    //
-    //     if (!currentColBlock || row === m - 1) continue;
-    //
-    //     const nextRowCurrentColBlock = mappedBorad[row + 1][col];
-    //
-    //     if (!nextRowCurrentColBlock) {
-    //       [mappedBorad[row][col], mappedBorad[row + 1][col]] = [
-    //         mappedBorad[row + 1][col],
-    //         mappedBorad[row][col],
-    //       ];
-    //     }
-    //   }
-    // }
-
-    // 아래에서 위의 요소를 당겨와야 풀림
-    // row index를 m - 1부터 시작해서 ""인 경우 nextIndex를 올린다. nextIndex의 자리에 문자열이 있는 경우
-    // 두 요소를 바꾸고 인덱스도 바꾼다.
-    // row index나 nextIndex가 -1이 되면 col index를 다시 m -1로 바꾸고 colIndex를 1 올린다.
-    // row index가 -1이고 col index가 m -1이 되면 while문 종료
+    // 아래에서 위의 요소를 당겨오기
     let rowIndex = m - 1;
     let nextRowIndex = m - 1;
     let colIndex = 0;
