@@ -47,7 +47,7 @@ function solution(m, n, board) {
     let colIndex = 0;
 
     while (true) {
-      if (colIndex === n - 1 && nextRowIndex === -1) break;
+      if (nextRowIndex === -1 && colIndex === n - 1) break;
 
       if (nextRowIndex === -1) {
         rowIndex = m - 1;
