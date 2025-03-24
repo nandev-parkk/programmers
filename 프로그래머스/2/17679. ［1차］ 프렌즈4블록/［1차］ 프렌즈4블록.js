@@ -41,7 +41,11 @@ function solution(m, n, board) {
       mappedBorad[row + 1][col + 1] = "";
     }
 
-    // 아래에서 위의 요소를 당겨오기
+    // 아래에서 위의 요소를 당겨와야 풀림
+    // 현재 요소가 있는 경우 rowIndex--, nextRowIndex--
+    // 현재 요소가 없는 경우 nextRowIndex--, 만약 다음 요소가 있는 경우 현재 요소와 자리를 바꾸고 rowIndex--
+    // 만약 nextRowIndex가 -1이면 rowIndex와 nextRowIndex를 m - 1로 초기화하고, colIndex++;
+    // 만약 colIndex === n -1이고 nextRowIndex === -1이면 while문 종료
     let rowIndex = m - 1;
     let nextRowIndex = m - 1;
     let colIndex = 0;
