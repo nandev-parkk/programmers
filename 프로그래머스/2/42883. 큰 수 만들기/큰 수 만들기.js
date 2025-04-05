@@ -1,16 +1,6 @@
 function solution(number, k) {
-  const answer = [];
+  const sortedNumber = [...number].sort();
+  sortedNumber.splice(0, k);
 
-  for (const num of number) {
-    while (k > 0 && answer[answer.length - 1] < num) {
-      answer.pop();
-      k--;
-    }
-
-    answer.push(num);
-  }
-
-  answer.splice(answer.length - k, k);
-
-  return answer.join("");
+  return sortedNumber.reverse().join("");
 }
