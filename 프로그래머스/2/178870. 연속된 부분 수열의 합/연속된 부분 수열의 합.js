@@ -12,15 +12,11 @@ function solution(sequence, k) {
       sum += sequence[end];
       end++;
     } else {
-      // if (start === end - 1) return [start, end - 1];
-
       answer.push([start, end - 1]);
       sum -= sequence[start];
       start++;
     }
   }
-
-  if (answer.length === 1) return answer[0];
 
   const sortedAnswer = answer.sort((a, b) => {
     const aLength = a[1] - a[0];
