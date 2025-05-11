@@ -66,11 +66,7 @@ function solution(N, road, K) {
       );
     }
 
-    const mappedHours = Object.entries(hours)
-      .filter(([_, hour]) => hour <= K)
-      .map(([node]) => node);
-
-    return mappedHours.length;
+    return Object.entries(hours).filter(([_, hour]) => hour <= K).length;
   };
 
   return dijkstra(graph, "1");
