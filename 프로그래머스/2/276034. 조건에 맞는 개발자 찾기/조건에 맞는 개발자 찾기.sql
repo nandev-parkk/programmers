@@ -1,0 +1,11 @@
+-- 코드를 작성해주세요
+
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS
+WHERE SKILL_CODE &
+    (
+        SELECT BIT_OR(CODE) -- 1280
+        FROM SKILLCODES
+        WHERE NAME IN ('C#', 'Python')
+    ) > 0
+ORDER BY ID;
