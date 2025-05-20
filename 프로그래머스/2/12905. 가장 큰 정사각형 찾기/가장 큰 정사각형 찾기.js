@@ -15,7 +15,7 @@ function solution(board) {
       }
     }
       
-      answer = Math.max(answer, ...board[i]);
+    answer = Math.max(answer, ...board[i]);
   }
 
   return answer ** 2;
