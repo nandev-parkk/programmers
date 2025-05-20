@@ -11,9 +11,11 @@ function solution(board) {
           board[i][j] +
           Math.min(board[i][j - 1], board[i - 1][j], board[i - 1][j - 1]);
 
-        answer = Math.max(answer, board[i][j]);
+        // answer = Math.max(answer, board[i][j]);
       }
     }
+      
+      answer = Math.max(answer, ...board[i]);
   }
 
   return answer ** 2;
