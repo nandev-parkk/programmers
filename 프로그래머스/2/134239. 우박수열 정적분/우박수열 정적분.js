@@ -29,13 +29,13 @@ function solution(k, ranges) {
 
   // 3. 범위 내의 변의 넓이를 다 더해서 리턴해버려
   const answer = ranges.map(([a, b]) => {
-    const right = n - Math.abs(b);
+    const end = n - Math.abs(b);
 
-    if (a > right) return -1;
+    if (a > end) return -1;
 
     let sum = 0;
 
-    for (let i = a; i < right; i++) {
+    for (let i = a; i < end; i++) {
       sum += calculatedCollatz[i];
     }
 
