@@ -4,12 +4,10 @@ function solution(targets) {
   let count = 0;
   let interceptionPoint = 0;
 
-  for (let i = 0; i < sortedTargets.length; i++) {
-    let [currentStart, currentEnd] = sortedTargets[i];
-
-    if (currentStart >= interceptionPoint) {
+  for (const [start, end] of sortedTargets) {
+    if (start >= interceptionPoint) {
       count++;
-      interceptionPoint = currentEnd;
+      interceptionPoint = end;
     }
   }
 
