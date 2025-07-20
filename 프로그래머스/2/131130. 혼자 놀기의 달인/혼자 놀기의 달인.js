@@ -1,31 +1,31 @@
 function solution(cards) {
-  let i = 0;
+  let idx = 0;
   let order = 1;
-  let length = cards.length;
-  const obj = {};
+  let cardsLength = cards.length;
   let temp = [];
+  const answer = {};
 
-  while (length > -1) {
-    const currentCard = cards[i];
+  while (cardsLength > -1) {
+    const currentCard = cards[idx];
 
     if (currentCard === "visited") {
-      obj[order] = temp;
+      answer[order] = temp;
       order++;
 
-      const nextCard = cards.findIndex((card) => card !== "visited");
+      const availableIdx = cards.findIndex((card) => card !== "visited");
 
-      i = nextCard;
+      idx = availableIdx;
       temp = [];
       continue;
     }
 
-    cards[i] = "visited";
-    i = currentCard - 1;
-    length--;
+    cards[idx] = "visited";
+    idx = currentCard - 1;
+    cardsLength--;
     temp.push(currentCard);
   }
 
-  const values = Object.values(obj);
+  const values = Object.values(answer);
 
   if (values.length === 1) return 0;
 
