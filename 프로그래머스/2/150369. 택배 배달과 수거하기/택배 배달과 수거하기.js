@@ -39,9 +39,9 @@ function solution(cap, n, deliveries, pickups) {
     truck = 0;
 
     // answer에 distance를 더하고, distance를 배달 및 수거 후 가장 먼 곳으로 최신화
-    answer += distance;
+    answer += distance * 2;
     distance = Math.max(deliveries.length, pickups.length);
   }
 
-  return answer * 2;
+  return answer;
 }
