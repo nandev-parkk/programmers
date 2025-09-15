@@ -29,6 +29,7 @@ function solution(begin, target, words) {
     for (let i = 0; i < words.length; i++) {
       if (checkDiff(currentWord, words[i]) && !visited[i]) {
         queue.push([words[i], step + 1]);
+        visited[i] = true;
       }
     }
   }
