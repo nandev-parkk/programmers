@@ -5,7 +5,7 @@ function solution(n, works) {
   const sortedWorks = works.sort((a, b) => b - a);
 
   while (n) {
-    let maxWork = sortedWorks[0];
+    const maxWork = sortedWorks[0];
 
     for (let i = 0; i < sortedWorks.length; i++) {
       if (!n) break;
@@ -16,5 +16,5 @@ function solution(n, works) {
     }
   }
 
-  return works.reduce((acc, cv) => (acc += cv ** 2), 0);
+  return sortedWorks.reduce((acc, cv) => (acc += cv ** 2), 0);
 }
