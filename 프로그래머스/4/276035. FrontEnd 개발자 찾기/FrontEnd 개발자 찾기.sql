@@ -1,0 +1,14 @@
+-- 코드를 작성해주세요
+-- DEVELOPERS 테이블에서 FrontEnd 스킬을 가진 개발자의 ID, 이메일, 이름, 성을 ID 오름차순으로 정렬해 조회
+
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS D
+    JOIN SKILLCODES S
+    ON D.SKILL_CODE & (
+        SELECT BIT_OR(CODE)
+        FROM SKILLCODES
+        WHERE CATEGORY = 'Front End'
+    )
+WHERE CATEGORY = 'Front End'
+GROUP BY ID, EMAIL, FIRST_NAME, LAST_NAME
+ORDER BY ID;
