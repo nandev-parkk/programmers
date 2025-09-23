@@ -8,11 +8,6 @@ function solution(m, n, puddles) {
   for (const [puddleX, puddleY] of puddles) {
     puddleMap[puddleY - 1][puddleX - 1] = true;
   }
-  // [
-  //  [ 1, 1, 1, 1],
-  //  [ 1, 1, 1, 1],
-  //  [ 1, 1, 1, 1]
-  // ]
 
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
