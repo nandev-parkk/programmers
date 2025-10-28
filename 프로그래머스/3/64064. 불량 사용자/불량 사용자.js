@@ -30,8 +30,7 @@ function solution(user_id, banned_id) {
         if (currentBannedId[j] === "*") continue;
 
         if (
-          currentUserId[j] !==
-          (currentBannedId[j] !== "*" && currentBannedId[j])
+          currentUserId[j] !== currentBannedId[j]
         )
           return false;
       }
