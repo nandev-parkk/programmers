@@ -11,7 +11,7 @@ function solution(stones, k) {
       if (stone - mid <= 0) count++;
       else count = 0;
 
-      if (count >= k) break;
+      if (count === k) break;
     }
 
     if (count >= k) right = mid - 1;
