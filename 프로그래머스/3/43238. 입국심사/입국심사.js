@@ -1,12 +1,13 @@
 function solution(n, times) {
   // 문제의 관점 ** n명을 모두 심사하는데 최소 몇분이 필요할까 **
   // times를 오름차순 정렬
-  times.sort((a, b) => a - b);
+  // times.sort((a, b) => a - b);
 
   // 입국 심사하는데 걸리는 최소 시간과 최대 시간
   // 이 사이에 정답이 있다 이 말이야!!!
   let min = 1;
-  let max = times[times.length - 1] * n;
+  let max = Math.min(...times) * n;
+  // let max = times[times.length - 1] * n;
 
   while (min <= max) {
     // 현재 최소 시간과 최대 시간의 중앙값을 구함
