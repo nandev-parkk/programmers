@@ -42,8 +42,8 @@ function solution(enroll, referral, seller, amount) {
       setAmount(topNode, topNodeCurrentAmount + keepAmount);
 
       [topNode] = graph.get(topNode);
-        
-        if (passAmount < 1) break;
+
+      if (passAmount < 1) break;
     }
   });
 
