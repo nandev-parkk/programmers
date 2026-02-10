@@ -15,12 +15,13 @@ class MinHeap {
     this.heap.push(value);
 
     let curIdx = this.heap.length - 1;
-    let parIdx = (curIdx / 2) >> 0;
+    let parIdx = Math.floor((curIdx - 1) / 2);
 
-    while (curIdx > 1 && this.heap[parIdx][1] > this.heap[curIdx][1]) {
+    while (curIdx && this.heap[parIdx][1] > this.heap[curIdx][1]) {
       this.swap(parIdx, curIdx);
+
       curIdx = parIdx;
-      parIdx = (curIdx / 2) >> 0;
+      parIdx = Math.floor((curIdx - 1) / 2);
     }
   }
 
@@ -68,25 +69,20 @@ function solution(jobs) {
 
   let time = 0;
   let complete = 0;
-  let total = 0;
+  let answer = 0;
 
-  // jobs나 minHeap에 job이 있으면 while문 실행
+  // for문을 돌면서 time과 job[0]의 시점이 맞는 순간 queue에 push
   while (jobs.length || minHeap.size()) {
-    // jobs에 job이 있으면 jobs의 첫번째 요소의 실행 시점과 time이 같으면 빼서 minHeap에 push
-    // 같지 않으면 while문 종료
     while (jobs.length) {
       if (jobs[0][0] === time) {
         minHeap.push(jobs.shift());
       } else break;
     }
 
-    // minHeap에 job이 있고 완료시간보다 time이 크거나 같으면 아래 로직 수행
-    // minHeap에서
     if (minHeap.size() && time >= complete) {
-      const job = minHeap.pop();
-
-      complete = job[1] + time;
-      total += complete - job[0];
+      const task = minHeap.pop();
+      complete = task[1] + time;
+      answer += complete - task[0];
     }
 
     time++;
