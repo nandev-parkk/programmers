@@ -9,8 +9,9 @@ function solution(n, t, m, timetable) {
     .sort((a, b) => a - b);
 
   let busTime = 9 * 60; // 첫 차 시간은 09:00
-  let lastTime = 0;
   let crewIdx = 0;
+
+  let answer = 0;
 
   // 셔틀 버스 운행
   for (let i = 0; i < n; i++) {
@@ -30,15 +31,15 @@ function solution(n, t, m, timetable) {
     // 막차인 경우
     if (i === n - 1) {
       if (max > 0)
-        lastTime = busTime; // 자리가 남은 경우 버스 시간
-      else lastTime = sortedTimetable[crewIdx - 1] - 1; // 자리가 꽉 찬 경우 마지막으로 탄 사람보다 1분 일찍
+        answer = busTime; // 자리가 남은 경우 버스 시간
+      else answer = sortedTimetable[crewIdx - 1] - 1; // 자리가 꽉 찬 경우 마지막으로 탄 사람보다 1분 일찍
     }
 
     busTime += t; // 다음 버스 시간으로 최신화
   }
 
-  const hour = Math.floor(lastTime / 60);
-  const minute = lastTime % 60;
+  const hour = Math.floor(answer / 60);
+  const minute = answer % 60;
 
   return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 }
